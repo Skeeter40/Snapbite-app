@@ -24,10 +24,8 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { storage } from "./storage";
-
-// ---------- constants ----------
-
+import { storage } from 
+import PremiumButton from "./PremiumButton";
 const GREEN = "#10b981";
 const GREEN_DARK = "#059669";
 const GREEN_BG = "#ecfdf5";
@@ -727,8 +725,8 @@ export default function SnapBiteApp() {
             <Camera size={22} />
           </button>
         )}
-
         <div className="fixed bottom-0 left-0 right-0">
+        <PremiumButton />)
           <div className="max-w-md mx-auto bg-white border-t border-gray-100 flex items-center justify-around py-2.5 px-2">
             {TABS.map((t) => {
               const Icon = t.icon;
