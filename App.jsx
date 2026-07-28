@@ -24,7 +24,7 @@ import {
   Tooltip,
   CartesianGrid,
 } from "recharts";
-import { storage } from 
+import { storage } from "./storage";
 import PremiumButton from "./PremiumButton";
 const GREEN = "#10b981";
 const GREEN_DARK = "#059669";
