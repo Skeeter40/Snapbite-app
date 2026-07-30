@@ -14,7 +14,7 @@ export default function PremiumButton() {
         window.location.href = data.url;
       } else {
         alert("Error: " + data.error);
-      } catch (err) {
+      }catch (err) {
       alert("Could not reach payment server.");
     } finally {
       setLoading(false);
