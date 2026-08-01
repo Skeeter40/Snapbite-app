@@ -171,7 +171,7 @@ function EmptyState({ title, subtitle, actionLabel, onAction }) {
           className="flex items-center gap-2 text-white font-semibold px-6 py-3 rounded-full"
           style={{ backgroundColor: GREEN }}
         >
-          Pencil size={18} />
+          <Pencil size={18} />
           {actionLabel}
         </button>
       )}
@@ -722,7 +722,7 @@ export default function SnapBiteApp() {
             className="fixed bottom-24 right-1/2 translate-x-[150px] sm:translate-x-[178px] w-14 h-14 rounded-full shadow-lg flex items-center justify-center text-white"
             style={{ backgroundColor: GREEN }}
           >
-            Pencil size={22} />
+            <Pencil size={22} />
           </button>
         )}
         <div className="fixed bottom-0 left-0 right-0">
