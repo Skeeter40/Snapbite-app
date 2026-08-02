@@ -33,6 +33,26 @@ const CARBS = "#f59e0b";
 const FAT = "#ef4444";
 const BG = "#f2f4f2";
 
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { error: null };
+  }
+  static getDerivedStateFromError(error) {
+    return { error };
+  }
+  render() {
+    if (this.state.error) {
+      return (
+        <div style={{ padding: 20, background: "white" }}>
+          <p style={{ color: "red", fontWeight: "bold" }}>Error:</p>
+          <p>{String(this.state.error.message || this.state.error)}</p>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 const PRESETS = [
   { key: "lose", label: "Lose weight", calories: 1600, protein: 130, carbs: 150, fat: 55 },
   { key: "maintain", label: "Maintain", calories: 2000, protein: 120, carbs: 220, fat: 65 },
@@ -703,7 +723,7 @@ export default function SnapBiteApp() {
             onOpenAdd={() => setModalOpen(true)}
           />
         )}
-        {tab === "trends" && <TrendsScreen weekData={weekData} goals={goals} />}
+        {tab === "trends" && <ErrorBoundary><TrendsScreen weekData={weekData} goals={goals} /></ErrorBoundary>}
         {tab === "history" && (
           <HistoryScreen
             days={last7}
