@@ -4,6 +4,7 @@ import {
   BarChart3,
   Calendar,
   Flag,
+  Camera,
   Pencil,
   Droplet,
   Plus,
