@@ -27,6 +27,8 @@ import {
 } from "recharts";
 import { storage } from "./storage";
 import PremiumButton from "./PremiumButton";
+import AuthScreen from "./AuthScreen";
+import { supabase } from "./supabaseClient";
 const GREEN = "#10b981";
 const GREEN_DARK = "#059669";
 const GREEN_BG = "#ecfdf5";
@@ -624,6 +626,22 @@ const TABS = [
 ];
 
 export default function SnapBiteApp() {
+ const [session, setSession] = useState(null);
+const [authLoading, setAuthLoading] = useState(true);
+
+useEffect(() => {
+  supabase.auth.getSession().then(({ data }) => {
+    setSession(data.session);
+    setAuthLoading(false);
+  });
+  const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    setSession(newSession);
+  });
+  return () => listener.subscription.unsubscribe();
+}, []);
+
+if (authLoading) return null;
+if (!session) return <AuthScreen />; 
   const today = useMemo(() => new Date(), []);
   const [tab, setTab] = useState("today");
   const [goals, setGoals] = useState(DEFAULT_GOALS);
