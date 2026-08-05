@@ -720,7 +720,7 @@ useEffect(() => {
 }, []);
 
 if (authLoading) return null;
-if (!session) return <AuthScreen />;)
+if (!session) return <AuthScreen />;
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: BG }}>
