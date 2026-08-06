@@ -16,13 +16,18 @@ export default function AuthScreen() {
     setError("");
     setLoading(true);
 
-    const { error } =
-      mode === "signin"
-        ? await supabase.auth.signInWithPassword({ email, password })
-        : await supabase.auth.signUp({ email, password });
+    try {
+      const { error } =
+        mode === "signin"
+          ? await supabase.auth.signInWithPassword({ email, password })
+          : await supabase.auth.signUp({ email, password });
+
+      if (error) setError(error.message);
+    } catch (err) {
+      setError("Caught error: " + (err.message || String(err)));
+    }
 
     setLoading(false);
-    if (error) setError(error.message);
   };
 
   return (
@@ -38,6 +43,10 @@ export default function AuthScreen() {
           {mode === "signin"
             ? "Sign in to track your meals."
             : "Sign up to start tracking with SnapBite."}
+        </p>
+
+        <p className="text-xs text-gray-400 mb-4 break-all">
+          DEBUG URL: {String(import.meta.env.VITE_SUPABASE_URL)}
         </p>
 
         <form onSubmit={handleSubmit}>
@@ -66,7 +75,7 @@ export default function AuthScreen() {
           />
 
           {error && (
-            <p className="text-sm text-red-500 mb-4">{error}</p>
+            <p className="text-sm text-red-500 mb-4 break-all">{error}</p>
           )}
 
           <button
