@@ -11,25 +11,27 @@ export default function AuthScreen() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const [debugInfo, setDebugInfo] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
-      const { error } =
+      const result =
         mode === "signin"
           ? await supabase.auth.signInWithPassword({ email, password })
           : await supabase.auth.signUp({ email, password });
 
-      if (error) setError(error.message);
+      setDebugInfo(JSON.stringify(result, null, 2));
+      if (result.error) setError(result.error.message);
     } catch (err) {
       setError("Caught error: " + (err.message || String(err)));
     }
 
     setLoading(false);
   };
-
   return (
     <div
       className="min-h-screen flex items-center justify-center px-6"
@@ -76,8 +78,10 @@ export default function AuthScreen() {
             className="w-full bg-gray-50 rounded-xl px-4 py-3 mb-4 text-gray-900 outline-none"
           />
 
-          {error && (
-            <p className="text-sm text-red-500 mb-4 break-all">{error}</p>
+          debugInfo && (
+            <pre className="text-[10px] text-gray-500 mb-4 whitespace-pre-wrap break-all bg-gray-50 p-2 rounded">
+              {debugInfo}
+            </pre>
           )}
 
           <button
