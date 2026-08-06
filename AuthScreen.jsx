@@ -78,7 +78,7 @@ export default function AuthScreen() {
             className="w-full bg-gray-50 rounded-xl px-4 py-3 mb-4 text-gray-900 outline-none"
           />
 
-          debugInfo && (
+         {debugInfo && (
             <pre className="text-[10px] text-gray-500 mb-4 whitespace-pre-wrap break-all bg-gray-50 p-2 rounded">
               {debugInfo}
             </pre>
