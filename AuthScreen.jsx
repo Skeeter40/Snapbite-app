@@ -55,6 +55,7 @@ export default function AuthScreen() {
           </label>
           <input
             type="email"
+            autoCapitalize="none"
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -67,6 +68,7 @@ export default function AuthScreen() {
           </label>
           <input
             type="password"
+            autoCapitalize="none"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
