@@ -45,9 +45,6 @@ export default function AuthScreen() {
             : "Sign up to start tracking with SnapBite."}
         </p>
 
-        <p className="text-xs text-gray-400 mb-4 break-all">
-          
-
         <form onSubmit={handleSubmit}>
           <label className="block text-xs font-semibold text-gray-500 mb-1">
             Email
