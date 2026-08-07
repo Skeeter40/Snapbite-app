@@ -70,10 +70,7 @@ export default function AuthScreen() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
             className="w-full bg-gray-50 rounded-xl px-4 py-3 mb-4 text-gray-900 outline-none"
-          />
-
-         
-
+       />
           <button
             type="submit"
             disabled={loading}
@@ -87,7 +84,6 @@ export default function AuthScreen() {
               : "Sign Up"}
           </button>
         </form>
-
         <button
           onClick={() => setMode(mode === "signin" ? "signup" : "signin")}
           className="w-full text-center text-sm text-gray-500 mt-4"
