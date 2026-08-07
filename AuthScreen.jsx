@@ -29,8 +29,7 @@ export default function AuthScreen() {
 
     setLoading(false);
   };
-    setLoading(false);
-  };
+    
   return (
     <div
       className="min-h-screen flex items-center justify-center px-6"
