@@ -11,25 +11,24 @@ export default function AuthScreen() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const [debugInfo, setDebugInfo] = useState("");
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
-      const result =
+      const { error } =
         mode === "signin"
           ? await supabase.auth.signInWithPassword({ email, password })
           : await supabase.auth.signUp({ email, password });
 
-      setDebugInfo(JSON.stringify(result, null, 2));
-      if (result.error) setError(result.error.message);
+      if (error) setError(error.message);
     } catch (err) {
       setError("Caught error: " + (err.message || String(err)));
     }
 
+    setLoading(false);
+  };
     setLoading(false);
   };
   return (
@@ -48,8 +47,7 @@ export default function AuthScreen() {
         </p>
 
         <p className="text-xs text-gray-400 mb-4 break-all">
-          DEBUG URL: {String(import.meta.env.VITE_SUPABASE_URL)}
-        </p>
+          
 
         <form onSubmit={handleSubmit}>
           <label className="block text-xs font-semibold text-gray-500 mb-1">
@@ -78,11 +76,7 @@ export default function AuthScreen() {
             className="w-full bg-gray-50 rounded-xl px-4 py-3 mb-4 text-gray-900 outline-none"
           />
 
-         {debugInfo && (
-            <pre className="text-[10px] text-gray-500 mb-4 whitespace-pre-wrap break-all bg-gray-50 p-2 rounded">
-              {debugInfo}
-            </pre>
-          )}
+         
 
           <button
             type="submit"
