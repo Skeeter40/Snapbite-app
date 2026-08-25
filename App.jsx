@@ -633,6 +633,7 @@ export default function SnapBiteApp() {
   const [dayCache, setDayCache] = useState({});
   const [weekData, setWeekData] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [showProgressPhotos, setShowProgressPhotos] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const last7 = useMemo(() => Array.from({ length: 7 }).map((_, i) => addDays(today, -6 + i)).reverse(), [today]);
