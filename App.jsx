@@ -762,7 +762,7 @@ if (!session) return <AuthScreen />;
             onOpenAdd={() => setModalOpen(true)}
           />
         )}
-        {tab === "trends" && <ErrorBoundary><TrendsScreen weekData={weekData} goals={goals} /></ErrorBoundary>}
+        {tab === "trends" && <ErrorBoundary><TrendsScreen weekData={weekData} goals={goals} onOpenProgressPhotos={() => setShowProgressPhotos(true)} /></ErrorBoundary>}
         {tab === "history" && (
           <HistoryScreen
             days={last7}
