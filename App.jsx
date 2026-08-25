@@ -709,14 +709,24 @@ const [session, setSession] = useState(null);
 const [authLoading, setAuthLoading] = useState(true);
 
 useEffect(() => {
+  const timeout = setTimeout(() => setAuthLoading(false), 8000);
+
   supabase.auth.getSession().then(({ data }) => {
+    clearTimeout(timeout);
     setSession(data.session);
     setAuthLoading(false);
+  }).catch(() => {
+    clearTimeout(timeout);
+    setAuthLoading(false);
   });
+
   const { data: listener } = supabase.auth.onAuthStateChange((_event, newSession) => {
     setSession(newSession);
   });
-  return () => listener.subscription.unsubscribe();
+  return () => {
+    clearTimeout(timeout);
+    listener.subscription.unsubscribe();
+  };
 }, []);
 
 if (authLoading) {
