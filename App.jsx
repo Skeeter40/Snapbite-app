@@ -444,7 +444,10 @@ function TrendsScreen({ weekData, goals }) {
         </div>
       )}
 
-      <div className="bg-white rounded-2xl p-4 flex items-center justify-between border border-gray-100">
+      <div
+  onClick={onOpenProgressPhotos}
+  className="bg-white rounded-2xl p-4 flex items-center justify-between border border-gray-100 cursor-pointer"
+>
         <div className="flex items-center gap-3">
           <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ backgroundColor: GREEN }}>
             <Camera size={20} className="text-white" />
