@@ -719,8 +719,14 @@ useEffect(() => {
   return () => listener.subscription.unsubscribe();
 }, []);
 
-if (authLoading) return null;
-if (!session) return <AuthScreen />;
+if (authLoading) {
+  return (
+    <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: BG }}>
+      <div className="text-gray-400 text-sm">Loading…</div>
+    </div>
+  );
+}
+if (!session) return <AuthScreen />;]
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: BG }}>
