@@ -29,7 +29,7 @@ export default function AuthScreen() {
 
     setLoading(false);
   };
-    
+
   return (
     <div
       className="min-h-screen flex items-center justify-center px-6"
@@ -44,6 +44,12 @@ export default function AuthScreen() {
             ? "Sign in to track your meals."
             : "Sign up to start tracking with SnapBite."}
         </p>
+
+        {error && (
+          <div className="bg-red-50 text-red-600 text-sm rounded-xl px-4 py-3 mb-4">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           <label className="block text-xs font-semibold text-gray-500 mb-1">
@@ -70,7 +76,7 @@ export default function AuthScreen() {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="••••••••"
             className="w-full bg-gray-50 rounded-xl px-4 py-3 mb-4 text-gray-900 outline-none"
-       />
+          />
           <button
             type="submit"
             disabled={loading}
