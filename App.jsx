@@ -807,6 +807,7 @@ if (!session) return <AuthScreen />;
         </div>
 
         <AddMealModal open={modalOpen} onClose={() => setModalOpen(false)} onAdd={handleAddMeal} />
+        {showProgressPhotos && <ProgressPhotos onClose={() => setShowProgressPhotos(false)} />}
       </div>
     </div>
   );
