@@ -28,6 +28,7 @@ import {
 import { storage } from "./storage";
 import PremiumButton from "./PremiumButton";
 import AuthScreen from "./AuthScreen";
+import ProgressPhotos from "./ProgressPhotos";
 import { supabase } from "./supabaseClient";
 const GREEN = "#10b981";
 const GREEN_DARK = "#059669";
