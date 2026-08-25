@@ -417,7 +417,7 @@ function TodayScreen({ today, goals, dayData, onWaterChange, onOpenAdd }) {
   );
 }
 
-function TrendsScreen({ weekData, goals }) {
+function TrendsScreen({ weekData, goals, onOpenProgressPhotos }) {
   const hasData = weekData.some((d) => d.calories > 0);
   return (
     <div className="px-5 pb-28 pt-2">
